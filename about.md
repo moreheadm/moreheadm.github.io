@@ -18,7 +18,7 @@ currently on github), potentially helping the [FIRST robotics team](https://www.
 I was instrumental in founding, not failing school, and creating [this](https://moreheadm.github.io)
 website and a resume.
 
-This is my first attempt at website. It is made using Jekyll and hosted with Github.
+This is my first attempt at a website. It is made using Jekyll and hosted with Github.
 More about Jekyll at [jekyllrb.com](https://jekyllrb.com/). You can see the source for the website
 [here](https://github.com/moreheadm/moreheadm.github.io). 
 
