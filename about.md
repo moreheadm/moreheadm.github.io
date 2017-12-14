@@ -4,15 +4,23 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+Hello! I am a first year computer science major at UC San Diego, originally from the San Francisco
+Bay Area. My interests include machine learning, robotics, math, and music.
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+This site contains (or will soon contain) information about my projects, accomplishments,
+qualifications, thoughts, or anything else I think I should share with the world. Much of it is
+(or will be) archival -- for my future use and reflection -- but some of it will hopefully be useful or
+interesting to someone besides myself.
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+My current projects of interest are [an attempt to use machine learning to study the game Threes!](
+https://github.com/moreheadm/threes), using machine learning to predict fantasy football scores (not
+currently on github), potentially helping the [FIRST robotics team](https://www.falconxrobotics.com)
+I was instrumental in founding, not failing school, and creating [this](https://moreheadm.github.io)
+website and a resume.
 
+This is my first attempt at website. It is made using Jekyll and hosted with Github.
+More about Jekyll at [jekyllrb.com](https://jekyllrb.com/). You can see the source for the website
+[here](https://github.com/moreheadm/moreheadm.github.io). 
 
-[jekyll-organization]: https://github.com/jekyll
+[Here's another interesting link](https://www.youtube.com/watch?v=dQw4w9WgXcQ)!
+
