@@ -3,7 +3,7 @@ layout: post
 title:  How to Spend Club Money
 author: Max Morehead
 date:   2017-12-18 11:15:00 -0800
-categories: update
+categories: jekyll update
 ---
 
 This is a guide I wrote for clubs at my high school. This one is somewhat specific, but is is part
