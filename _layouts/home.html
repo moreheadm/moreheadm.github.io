@@ -43,6 +43,18 @@ layout: default
     {% endfor %}
     </ul>
 
-    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>>
+    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>-->
+
+  <h1> Frc Tutorials </h1>
+  <ul class="post-list"> 
+    {% for post in site.frc_tutorials %}
+    <li>
+      <h2>
+        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+      </h2>
+    </li>
+    {% endfor %}
+  </ul>
+
 
 </div>
