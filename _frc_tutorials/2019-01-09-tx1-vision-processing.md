@@ -35,7 +35,7 @@ vision code runs. This can potentially lead to problems.
 
 Building on the second reason, it's important to remember that in FRC, vision
 only augments existing robot capabilities; it's hardly ever key to the proper
-functioning of the robot. As in displayed in the crude representation below, if
+functioning of the robot. As in displayed in the crude representation below,
 your vision code is useless without working, well-programmed mechanisms, and
 your mechanisms are useless without a working drivetrain.
 
