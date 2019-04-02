@@ -59,7 +59,7 @@ collections:
   challenge_problems:
     output: true
     permalink: /problems/:year/:month/:day/:title:output_ext
-  pages:
+  miscellaneous_pages:
     output: true
     permalink: /pages/:title:output_ext
 
