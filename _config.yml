@@ -56,4 +56,12 @@ collections:
   frc_tutorials:
     output: true
     permalink: /frc_tutorials/:title:output_ext
+  challenge_problems:
+    output: true
+    permalink: /problems/:year/:month/:day/:title:output_ext
+  pages:
+    output: true
+    permalink: /pages/:title:output_ext
+
+
     
