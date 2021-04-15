@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-04-15T21:17:47+00:00</updated><id>/feed.xml</id><title type="html">Max Morehead</title><subtitle>This site contains information about my projects, qualifications, and thoughts on the world.</subtitle><entry><title type="html">How to Spend Club Money</title><link href="/jekyll/update/2017/12/18/how-to-spend-club-money.html" rel="alternate" type="text/html" title="How to Spend Club Money" /><published>2017-12-18T19:15:00+00:00</published><updated>2017-12-18T19:15:00+00:00</updated><id>/jekyll/update/2017/12/18/how-to-spend-club-money</id><content type="html" xml:base="/jekyll/update/2017/12/18/how-to-spend-club-money.html">&lt;p&gt;This is a guide I wrote for clubs at my high school. This one is somewhat specific, but is is part
+of a series of more general guides.&lt;/p&gt;
+
+&lt;h1 id=&quot;creating-a-budget&quot;&gt;Creating a budget&lt;/h1&gt;
+
+&lt;p&gt;At the beginning of the year, the club should create and approve a budget for the entire school
+year. Details and help for this process can be found in “How to Create and Maintain a Club Budget”.
+You should create a budget at the very beginning of the year and vote to approve it at your first
+or second club meeting. Then, submit it to the school treasurer to be approved by ASB.&lt;/p&gt;
+
+&lt;h1 id=&quot;spending-money-that-has-been-budgeted&quot;&gt;Spending Money that Has Been Budgeted&lt;/h1&gt;
+
+&lt;p&gt;Once you have a budget approved, you need to go through a separate approval process to spend the
+money you have in the account. For this process you’ll need one of the ASB expenditure approval
+forms from the office. There are two ways you can buy items:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. Pay and be reimbursed: For small items, you can purchase the items with your own money or
+your parents money and then be reimbursed for club funds. Make sure to keep all receipts from
+the purchase, or else you won’t be reimbursed.
+
+2. Purchase Order: For larger purchases, some websites and vendors offer a purchase order
+website. Obtain a quote from the website for the items you wish to order and approve the
+spending through the normal processes listed below. Then, talk to the school treasurer and
+he/she will help you with the purchase order.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In order to use either method, you must have the money in the club account and approve the
+expenditure at one of your regular club meetings through the regular voting process. Make sure to
+include the specific things you plan to buy and the maximum amount they will cost and to record
+this in the club’s minutes. Then, fill out the ASB expenditure approval form with the information
+from the meeting, have it signed by your club advisor, and hand it in to the school treasurer
+(he/she can handle the other signatures). Make sure you include a copy of the club’s minutes. It
+can also be helpful to include a quote or examples from online of the prices of the items you want
+to buy to prove that the costs will be what you say they are. If the amount you need to spend
+exceeds your budgeted amounts for the year, then you must vote on and submit a new, amended budget
+along with the spending approval.&lt;/p&gt;
+
+&lt;p&gt;It is extremely important that for both methods, you wait to actually purchase the items until
+after the spending has been approved by both your club and the ASB. ASB approval can take up to a
+week or more, so make sure you submit everything early. Also, if anything is shipped from online,
+it must be shipped to the school. Once it has been shipped, two members from the club must sign a
+list of the ordered items to ensure that every item has arrived. If you bought the item and need to
+reimbursed, give the school treasurer the shipping list (if applicable) and the actual receipt
+signed by two members of the club to verify the items have be received.&lt;/p&gt;
+
+&lt;p&gt;If you have any trouble figuring out how to spend your club’s money, talk to the school treasurer
+and/or the ASB, and they can help you figure it out.&lt;/p&gt;
+
+&lt;h1 id=&quot;pre-approval&quot;&gt;Pre-approval&lt;/h1&gt;
+
+&lt;p&gt;If you have an event or period for which unexpected expenditures might occur, you can seek
+pre-approval for spending. At a regular meeting, vote on and approve a specific amount of money to
+spend over a specific time period. You must have this money already in your club account. Then,
+fill out and sign an ASB expenditure approval form, and submit it to the school treasurer to be
+approved by ASB.&lt;/p&gt;
+
+&lt;p&gt;Once the spending has been pre-approved, you can buy items within that pre-approval up to but not
+exceeding the amount approved using either purchase orders or purchases with reimbursements. You
+still need to give the treasurer the shipping list (if applicable) and actual receipt signed by two
+members of the club to verify the items have be received in order to be reimbursed. Your internal
+club procedures should insure that pre-approved money is being spent how the members want it to be
+spent.&lt;/p&gt;
+
+&lt;p&gt;Pre-approval is different and separate from setting a budget at the beginning of the year. For a
+budget, you can plan to spend money you don’t have already, but for pre-approval, you are approving
+for specific purposes the spending of money you already have. In order to spend money, you need
+both a budget and spending approval.&lt;/p&gt;</content><author><name>Max Morehead</name></author><category term="jekyll" /><category term="update" /><summary type="html">This is a guide I wrote for clubs at my high school. This one is somewhat specific, but is is part of a series of more general guides.</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="/jekyll/update/2017/12/14/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2017-12-14T02:38:01+00:00</published><updated>2017-12-14T02:38:01+00:00</updated><id>/jekyll/update/2017/12/14/welcome-to-jekyll</id><content type="html" xml:base="/jekyll/update/2017/12/14/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry></feed>

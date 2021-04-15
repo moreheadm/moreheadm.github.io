@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Using Git for FRC | Max Morehead</title>
+<meta name="generator" content="Jekyll v3.9.1" />
+<meta property="og:title" content="Using Git for FRC" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This post will cover how to use Git for FRC with VSCode. It’s intended both as a cheatsheet and a tutorial. It’s mostly designed for Team 6662." />
+<meta property="og:description" content="This post will cover how to use Git for FRC with VSCode. It’s intended both as a cheatsheet and a tutorial. It’s mostly designed for Team 6662." />
+<link rel="canonical" href="/frc_tutorials/using-git-for-frc.html" />
+<meta property="og:url" content="/frc_tutorials/using-git-for-frc.html" />
+<meta property="og:site_name" content="Max Morehead" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-01-09T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Using Git for FRC" />
+<script type="application/ld+json">
+{"headline":"Using Git for FRC","description":"This post will cover how to use Git for FRC with VSCode. It’s intended both as a cheatsheet and a tutorial. It’s mostly designed for Team 6662.","url":"/frc_tutorials/using-git-for-frc.html","@type":"BlogPosting","dateModified":"2019-01-09T00:00:00+00:00","datePublished":"2019-01-09T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/frc_tutorials/using-git-for-frc.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Max Morehead" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Max Morehead</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Using Git for FRC</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2019-01-09T00:00:00+00:00" itemprop="datePublished">Jan 9, 2019
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>This post will cover how to use Git for FRC with VSCode. It’s intended both as
+a cheatsheet and a tutorial. It’s mostly designed for Team 6662.</p>
+
+<h1 id="git-cheetsheet">Git Cheetsheet</h1>
+
+<!--Clone a repository
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">git clone &lt;repo name&gt;</code></pre></figure>
+
+
+Check status of repository
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">git status</code></pre></figure>
+-->
+
+<p><strong>This workflow will work well for our purposes, be sure to use it each time you 
+commit.</strong></p>
+<ul>
+  <li>Pull changes from your fork/branch</li>
+  <li>Pull from origin master</li>
+  <li>Resolve merge conflicts</li>
+  <li>Make changes and make sure your changes work</li>
+  <li>Stage changed files</li>
+  <li>Commit staged files</li>
+  <li>Pull changes from origin master (again)</li>
+  <li>Resolve merge conflicts and commit</li>
+  <li>Push changes to your fork/branch</li>
+  <li>Submit a pull request to the main repository</li>
+</ul>
+
+<h1 id="tutorial">Tutorial</h1>
+
+<p>Git is a tool to manage different versions of a project, possibly shared between
+multiple users.</p>
+
+<p>First let’s setup Github. Github is a website (made by different
+people than Git) which remotely stores Git repositories, allowing collaboration
+across people and places. Create a Github account and go to <a href="https://github.com/FalconX-Robotics/roboRIO_2019">
+https://github.com/FalconX-Robotics/roboRIO_2019</a>. Then click fork (circled in
+red below and choose your account name from the popup. This forks the repository
+into your account; you will be making changes to this forked repository and
+submitting pull requests to the main repository. Navigate to your cloned
+repository in the browser.</p>
+
+<p><img src="/assets/images/git-github-fork-ss.png" alt="Forking" width="100%" class="responsive" /></p>
+
+<p>If you are on windows, the next step will require downloading <a href="://gitforwindows.org/">Git for Windows</a>. Default options are okay for the entire installation.
+Then, open VSCode, or close and reopen it if it’s already open.</p>
+
+<p>Many Git commands can be accessed in VSCode through the Ctrl-Shift-P shortcut,
+like many WPILib related commands. Press Ctrl-Shift-P and type Git clone, and an
+option should pop up to clone a repository. Select that option and enter the URL
+obtained from the dialog in the blue circle above under clone with HTTPS.
+Get this URL from <strong>your</strong> repository (make sure you clone your repository, not the
+team’s, as otherwise it may lead to confusion later). Select the directory on
+your computer where you want to store the project.</p>
+
+<p>Now we will configure Git. Open Git Bash and type the following two commands
+(pressing enter after each one).</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">git config <span class="nt">--global</span> user.name <span class="s2">"&lt;your name&gt;"</span>
+git config <span class="nt">--global</span> user.email <span class="s2">"&lt;your email&gt;"</span></code></pre></figure>
+
+<p>Note the quotation marks, and make sure to replace &lt;your name&gt; with your
+actual name and &lt;your email&gt; with the email you used to sign up to Github.
+These commands configure your commit signature to use your name and email. Next,
+with Git Bash navigate to your project folder. You can list the contents of the
+current folder you are in with the command</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">ls</span></code></pre></figure>
+
+<p>and change folders to a subfolder of the current folder with the command</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">cd</span></code></pre></figure>
+
+<p>Once you have navigated to your project directory, run the command</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">git remote add base &lt;URL&gt;.</code></pre></figure>
+
+<p><strong>This time get the URL from the team project</strong> (in the same “clone with HTTPS”
+dialog).</p>
+
+<p>Now your are all set up to use Git with VSCode. You can make changes to the
+project using the workflow above. The rest of this section will be going over
+how to do these.</p>
+
+<p>Accessing Git in VSCode is done through the icon on the side of the of the page
+that looks something like a tuning fork (it’s the third one down). Changes to
+files show up in the toolbar, and you can stage them for commit by pressing the 
+“plus” symbol next to the change. Once ready to commit, you can type a commit
+message in the textbox, and press Ctrl-Enter.</p>
+
+<p>The push and pull commands (as well as many others) can be accessed either
+through the “three dot” menu on the Git toolbar, or through Ctrl-Shift-P. Use
+“pull from…” and “push to…” and select a remote. You want to push only to
+your remote (origin), but pull from the team remote (base) and your remote, as
+described in the workflow.</p>
+
+<p>Resolving merge conflicts can be tricky. Whenever there is a conflict between
+two people code, it will show up as strange symbols in the source code files.
+The symbols will separate the two versions of the code. Manually edit the
+affected files, so that they work the way you want, remove the added symbols and
+potentially duplicate functionality. Commit after resolving the merge conflict.</p>
+
+<p>Submitting a pull request is done through the Github online interface.</p>
+
+<p>Note that all these operations can be done from the command line with Git Bash.</p>
+
+<h1 id="advanced-techniques">“Advanced” Techniques</h1>
+<p>TODO: add “advanced” techniques (these techniques won’t actually be advanced,
+just further Git features that you should eventually learn to use).</p>
+
+<p>TODO: add instructions for how to set git bash as your shell inside VSCode so
+you can use shell git commands within VSCode</p>
+
+  </div><a class="u-url" href="/frc_tutorials/using-git-for-frc.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Max Morehead</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Max Morehead</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/moreheadm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">moreheadm</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This site contains information about my projects, qualifications, and thoughts on the world.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

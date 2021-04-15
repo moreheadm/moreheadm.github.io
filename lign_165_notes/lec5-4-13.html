@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Lecture 5 | Max Morehead</title>
+<meta name="generator" content="Jekyll v3.9.1" />
+<meta property="og:title" content="Lecture 5" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Scorers For non-probabilistic languages, we had generators and recognizers For probabalistic languages, samplers are like generators, scorers are like generators Example scorer (defn score-ab* [str] (if (empty? str) 0.5 (if (prefix? &#39;(a b) str) (* 0.5 (score-ab* (rest (rest str)))) 0))) Notice these match the probabilities from the corresponding generator. For example, (score-ab* &#8216;(a b)) equals 0.25. (From student question) Keep in mind that while this is an exponential probability distribution, others are possible Modeling Corpora Imagine we&#8217;re given a dataset (e.g. Reddit comments) and and a model and we want to know how well does the model predict the dataset Corpora (plural of corpus) A corpus is a finite multiset of strings (for example, all the sentences in Moby Dick). Since it&#8217;s a multiset, the same sentence can appear twice. Corpus Samplers (defn sample-corpus [generator size] (if (= size 0) &#39;() (cons (generator) (sample-corpus generator (- size 1))))) Takes a sampler/generator and a size, and uses the sampler/generator to make a corpus of the given size. The problem is that in most corpora, each sentence depends on the last. For example, a corpus about baseball would have multiple sentence about baseball. We are eliminating this for now for simplicity. Corpus Scorer We can also have a corpus scorer, which takes a corpus and returns its probability. (defn score-corpus [scorer corpus] (if (empty? corpus) 1.0 (* (scorer (first corpus)) (score-corpus scorer (rest corpus))))) Scores first sentence, and multiplies it by the probability of rest of sentences. This also ignores that in real corpora, the probability of one sentence depends on the previous sentence. Note that the score for a particular corpus depends on the scorer which you use. Comparing two scorers We can compare two scorers, our previous scorer, and a scorer over {a, b}* (all strings made of a&#8217;s and b&#8217;s). Since {a, b}* is a superset of (ab)*, which means it has every string in (ab)* plus some extras, it will tend to assign A specific, restritive theory (like (ab)*) tends to assign higher probabilities to fewer strings. A general, less-restrictive theory (like {a, b}*) can assign more strings non-zero probabilities, but each particular string will tend to have lower probability. This tradeoff is a fundamental tradeoff" />
+<meta property="og:description" content="Scorers For non-probabilistic languages, we had generators and recognizers For probabalistic languages, samplers are like generators, scorers are like generators Example scorer (defn score-ab* [str] (if (empty? str) 0.5 (if (prefix? &#39;(a b) str) (* 0.5 (score-ab* (rest (rest str)))) 0))) Notice these match the probabilities from the corresponding generator. For example, (score-ab* &#8216;(a b)) equals 0.25. (From student question) Keep in mind that while this is an exponential probability distribution, others are possible Modeling Corpora Imagine we&#8217;re given a dataset (e.g. Reddit comments) and and a model and we want to know how well does the model predict the dataset Corpora (plural of corpus) A corpus is a finite multiset of strings (for example, all the sentences in Moby Dick). Since it&#8217;s a multiset, the same sentence can appear twice. Corpus Samplers (defn sample-corpus [generator size] (if (= size 0) &#39;() (cons (generator) (sample-corpus generator (- size 1))))) Takes a sampler/generator and a size, and uses the sampler/generator to make a corpus of the given size. The problem is that in most corpora, each sentence depends on the last. For example, a corpus about baseball would have multiple sentence about baseball. We are eliminating this for now for simplicity. Corpus Scorer We can also have a corpus scorer, which takes a corpus and returns its probability. (defn score-corpus [scorer corpus] (if (empty? corpus) 1.0 (* (scorer (first corpus)) (score-corpus scorer (rest corpus))))) Scores first sentence, and multiplies it by the probability of rest of sentences. This also ignores that in real corpora, the probability of one sentence depends on the previous sentence. Note that the score for a particular corpus depends on the scorer which you use. Comparing two scorers We can compare two scorers, our previous scorer, and a scorer over {a, b}* (all strings made of a&#8217;s and b&#8217;s). Since {a, b}* is a superset of (ab)*, which means it has every string in (ab)* plus some extras, it will tend to assign A specific, restritive theory (like (ab)*) tends to assign higher probabilities to fewer strings. A general, less-restrictive theory (like {a, b}*) can assign more strings non-zero probabilities, but each particular string will tend to have lower probability. This tradeoff is a fundamental tradeoff" />
+<link rel="canonical" href="/lign_165_notes/lec5-4-13.html" />
+<meta property="og:url" content="/lign_165_notes/lec5-4-13.html" />
+<meta property="og:site_name" content="Max Morehead" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-15T21:17:47+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Lecture 5" />
+<script type="application/ld+json">
+{"headline":"Lecture 5","description":"Scorers For non-probabilistic languages, we had generators and recognizers For probabalistic languages, samplers are like generators, scorers are like generators Example scorer (defn score-ab* [str] (if (empty? str) 0.5 (if (prefix? &#39;(a b) str) (* 0.5 (score-ab* (rest (rest str)))) 0))) Notice these match the probabilities from the corresponding generator. For example, (score-ab* &#8216;(a b)) equals 0.25. (From student question) Keep in mind that while this is an exponential probability distribution, others are possible Modeling Corpora Imagine we&#8217;re given a dataset (e.g. Reddit comments) and and a model and we want to know how well does the model predict the dataset Corpora (plural of corpus) A corpus is a finite multiset of strings (for example, all the sentences in Moby Dick). Since it&#8217;s a multiset, the same sentence can appear twice. Corpus Samplers (defn sample-corpus [generator size] (if (= size 0) &#39;() (cons (generator) (sample-corpus generator (- size 1))))) Takes a sampler/generator and a size, and uses the sampler/generator to make a corpus of the given size. The problem is that in most corpora, each sentence depends on the last. For example, a corpus about baseball would have multiple sentence about baseball. We are eliminating this for now for simplicity. Corpus Scorer We can also have a corpus scorer, which takes a corpus and returns its probability. (defn score-corpus [scorer corpus] (if (empty? corpus) 1.0 (* (scorer (first corpus)) (score-corpus scorer (rest corpus))))) Scores first sentence, and multiplies it by the probability of rest of sentences. This also ignores that in real corpora, the probability of one sentence depends on the previous sentence. Note that the score for a particular corpus depends on the scorer which you use. Comparing two scorers We can compare two scorers, our previous scorer, and a scorer over {a, b}* (all strings made of a&#8217;s and b&#8217;s). Since {a, b}* is a superset of (ab)*, which means it has every string in (ab)* plus some extras, it will tend to assign A specific, restritive theory (like (ab)*) tends to assign higher probabilities to fewer strings. A general, less-restrictive theory (like {a, b}*) can assign more strings non-zero probabilities, but each particular string will tend to have lower probability. This tradeoff is a fundamental tradeoff","url":"/lign_165_notes/lec5-4-13.html","@type":"BlogPosting","dateModified":"2021-04-15T21:17:47+00:00","datePublished":"2021-04-15T21:17:47+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/lign_165_notes/lec5-4-13.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Max Morehead" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Max Morehead</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Lecture 5</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="" itemprop="datePublished">
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+     <h1>Scorers</h1>
+<ul>
+  <li>For non-probabilistic languages, we had generators and recognizers</li>
+  <li>For probabalistic languages, samplers are like generators, scorers are like
+    generators</li>
+</ul>
+<h2>Example scorer</h2>
+<pre class="src" lang="clojure">
+(defn score-ab* [str]
+  (if (empty? str)
+    0.5
+    (if (prefix? &#39;(a b) str)
+      (* 0.5 (score-ab* (rest (rest str))))
+      0)))
+</pre>
+<ul>
+  <li>Notice these match the probabilities from the corresponding generator. For
+    example, (score-ab* &#8216;(a b)) equals 0.25.</li>
+  <li>(From student question) Keep in mind that while this is an exponential
+    probability distribution, others are possible</li>
+</ul>
+<h1>Modeling Corpora</h1>
+<ul>
+  <li>Imagine we&#8217;re given a dataset (e.g. Reddit comments) and and a model and we
+    want to know how well does the model predict the dataset</li>
+</ul>
+<h2>Corpora (plural of corpus)</h2>
+<ul>
+  <li>A corpus is a finite multiset of strings (for example, all the sentences in
+    Moby Dick). Since it&#8217;s a multiset, the same sentence can appear twice.</li>
+</ul>
+<h2>Corpus Samplers</h2>
+<pre class="src" lang="clojure">
+(defn sample-corpus [generator size]
+  (if (= size 0)
+   &#39;()
+   (cons (generator)
+         (sample-corpus generator (- size 1)))))
+</pre>
+<ul>
+  <li>Takes a sampler/generator and a size, and uses the sampler/generator to make a corpus of the given size.</li>
+  <li>The problem is that in most corpora, each sentence depends on the last. For example, a corpus about baseball would have multiple sentence about baseball. We are eliminating this for now for simplicity.</li>
+</ul>
+<h2>Corpus Scorer</h2>
+<ul>
+  <li>We can also have a corpus scorer, which takes a corpus and returns its probability.</li>
+</ul>
+<pre class="src" lang="clojure">
+(defn score-corpus [scorer corpus]
+    (if (empty? corpus)
+      1.0
+      (* (scorer (first corpus))
+         (score-corpus scorer (rest corpus)))))
+</pre>
+<ul>
+  <li>Scores first sentence, and multiplies it by the probability of rest of sentences.</li>
+  <li>This also ignores that in real corpora, the probability of one sentence depends on the previous sentence.</li>
+  <li>Note that the score for a particular corpus depends on the scorer which you use.</li>
+</ul>
+<h1>Comparing two scorers</h1>
+<ul>
+  <li>We can compare two scorers, our previous scorer, and a scorer over {a, b}* (all strings made of a&#8217;s and b&#8217;s).</li>
+  <li>Since {a, b}* is a superset of (ab)*, which means it has every string in (ab)* plus some extras,
+    it will tend to assign</li>
+  <li>A specific, restritive theory (like (ab)*) tends to assign higher probabilities to fewer strings.
+    A general, less-restrictive theory (like {a, b}*) can assign more strings non-zero probabilities, but each particular string will tend to have lower probability.</li>
+  <li>This tradeoff is a fundamental tradeoff</li>
+</ul>
+ 
+  </div><a class="u-url" href="/lign_165_notes/lec5-4-13.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Max Morehead</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Max Morehead</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/moreheadm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">moreheadm</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This site contains information about my projects, qualifications, and thoughts on the world.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

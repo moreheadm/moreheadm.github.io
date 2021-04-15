@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Vision Processing with the Nvidia Jetson for FRC | Max Morehead</title>
+<meta name="generator" content="Jekyll v3.9.1" />
+<meta property="og:title" content="Vision Processing with the Nvidia Jetson for FRC" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This post will cover how to set up vision processing for the First Robotics Competition. It’s eventually intended to be for general use, but currently is specific to the team I mentor, Team 6662, and is updated for the 2019 season. Before I start, a thank you to Team 900, the many resources (linked at the bottom) they released on the Jetson as a FRC vision platform have been invaluable." />
+<meta property="og:description" content="This post will cover how to set up vision processing for the First Robotics Competition. It’s eventually intended to be for general use, but currently is specific to the team I mentor, Team 6662, and is updated for the 2019 season. Before I start, a thank you to Team 900, the many resources (linked at the bottom) they released on the Jetson as a FRC vision platform have been invaluable." />
+<link rel="canonical" href="/frc_tutorials/tx1-vision-processing.html" />
+<meta property="og:url" content="/frc_tutorials/tx1-vision-processing.html" />
+<meta property="og:site_name" content="Max Morehead" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-01-09T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Vision Processing with the Nvidia Jetson for FRC" />
+<script type="application/ld+json">
+{"headline":"Vision Processing with the Nvidia Jetson for FRC","description":"This post will cover how to set up vision processing for the First Robotics Competition. It’s eventually intended to be for general use, but currently is specific to the team I mentor, Team 6662, and is updated for the 2019 season. Before I start, a thank you to Team 900, the many resources (linked at the bottom) they released on the Jetson as a FRC vision platform have been invaluable.","url":"/frc_tutorials/tx1-vision-processing.html","@type":"BlogPosting","dateModified":"2019-01-09T00:00:00+00:00","datePublished":"2019-01-09T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/frc_tutorials/tx1-vision-processing.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Max Morehead" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Max Morehead</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Vision Processing with the Nvidia Jetson for FRC</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2019-01-09T00:00:00+00:00" itemprop="datePublished">Jan 9, 2019
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>This post will cover how to set up vision processing for the <a href="https://www.firstinspires.org/">First Robotics
+Competition</a>. It’s eventually intended to be for
+general use, but currently is specific to the team I mentor, Team 6662, and is
+updated for the 2019 season. Before I start, a thank you to Team 900, the many
+resources (linked at the bottom) they released on the Jetson as a FRC vision
+platform have been invaluable.</p>
+
+<h2 id="introduction-to-frc-vision">Introduction to FRC Vision</h2>
+
+<p>In modern FRC games, vision targets are specifically placed around scoring or
+other game elements. Therefore, the goal of vision processing in FRC is not
+general navigation, but specific improvements to scoring abilities.</p>
+
+<p>There are four major parts of using vision processing:</p>
+<ol>
+  <li>Acquiring images from the camera</li>
+  <li>Processing the images (using for example, the roboRIO or the Jetson)</li>
+  <li>Communicating data from the processed images to the robot control code</li>
+  <li>Acting upon the vision data</li>
+</ol>
+
+<p>It’s possible to accomplish all of these steps using the roboRIO alone. However,
+it’s become standard practice in FRC to use a coprocessor (another computer
+that works alongside the roboRIO). There are a few reasons for this:</p>
+<ul>
+  <li>The roboRIO is too slow to do complicated vision processing operations.</li>
+  <li>Building on the first reason, running vision code on the roboRIO means you
+have to implement code to manage when the main robot code runs and when the
+vision code runs. This can potentially lead to problems.</li>
+</ul>
+
+<p>Building on the second reason, it’s important to remember that in FRC, vision
+only augments existing robot capabilities; it’s hardly ever key to the proper
+functioning of the robot. As in displayed in the crude representation below,
+your vision code is useless without working, well-programmed mechanisms, and
+your mechanisms are useless without a working drivetrain.</p>
+
+<p><img src="/assets/images/pyramid_of_frc.png" alt="The Pyramid of FRC" /></p>
+
+<p>More info on
+<a href="https://wpilib.screenstepslive.com/s/currentCS/m/vision/l/682117-strategies-for-vision-programming">screensteps</a>.</p>
+
+<h2 id="acquiring-images-from-the-camera">Acquiring images from the camera</h2>
+
+<p>There are many different options when it comes to cameras. 6662 has the commonly
+used <a href="https://www.microsoft.com/accessories/en-us/products/webcams/lifecam-hd-3000/t3h-00011">Microsoft Lifecam HD</a>,
+but I’m sure other similar options work as well. The Kinect used to be an
+interesting option, because it provided depth data, but unfortunately it is no
+longer sold, so falls afoul of the FRC rules. I recall that Team 900 used the 
+<a href="https://www.stereolabs.com/zed/">Zed 3D camera</a> which provided similar
+advantages. However, depending on the application, lack of depth data could
+potentially not be a problem, because vision targets and game elements have
+fixed size.</p>
+
+<p>The easiest thing to do is to plug the cameras directly into the Jetson. However,
+WPILib has a one line function to transmit video from the roboRIO to the driver
+station. It shouldn’t be too hard to do this from the Jetson, but requires
+some figuring out (TODO: actually figure this out). So just plug the USB camera
+into the Jetson USB port (obvious, right?).</p>
+
+<h2 id="processing-the-images">Processing the images</h2>
+
+<p>Now that we’ve gotten the image to the Jetson, we need to process it. What does
+“process” mean? The image starts as just a collection of pixel values. What we
+want to tell the robot is useful information about the robot’s state, maybe
+estimated distance to the vision target or angle with respect to the target.
+Image processing involves turning the image into this type of information.</p>
+
+<p>To facilitate image processing, we use a well-known library called OpenCV (CV
+stands for computer vision). On the <a href="https://developer.nvidia.com/embedded/learn/tutorials">Nvidia website</a>, in the OpenCV section,
+they have some videos on OpenCV for Jetson. However, a much easier way to get
+started with computer vision is GRIP. GRIP is a graphical program created by the
+same people who made WPILib for quickly prototyping vision processing
+alogorithms. There is a screensteps on GRIP <a href="https://wpilib.screenstepslive.com/s/currentCS/m/vision/l/463566-introduction-to-grip">here</a>
+and you can install it on your local computer from <a href="https://github.com/WPIRoboticsProjects/GRIP/releases">here</a>.</p>
+
+<p>TODO: add Team 900 links</p>
+
+  </div><a class="u-url" href="/frc_tutorials/tx1-vision-processing.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Max Morehead</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Max Morehead</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/moreheadm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">moreheadm</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This site contains information about my projects, qualifications, and thoughts on the world.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
