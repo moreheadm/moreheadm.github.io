@@ -28,6 +28,7 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-org
 
 exclude:
   - Gemfile
@@ -62,6 +63,9 @@ collections:
   miscellaneous_pages:
     output: true
     permalink: /pages/:title:output_ext
+  lign_165_notes:
+    output: true
+    permalink: /lign_165_notes/:title:output_ext
 
 
     

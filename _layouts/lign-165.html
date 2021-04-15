@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+<div class="lign-165">
+  <h1 class="page-heading">UCSD LIGN 165 Spring 2021 Notes</h1>
+  
+  <ul class="post-list"> 
+    {% for post in site.lign_165_notes %}
+      {% if post.title != "Index" %}
+      <li>
+        <h2>
+          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }} &ndash; {{ post.lec_date }}</a>
+        </h2>
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  {{ content }}
+</div>

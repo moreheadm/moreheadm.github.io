@@ -1,0 +1,61 @@
+#+TITLE: Lecture 5
+#+LAYOUT: post
+#+LEC_DATE: April 13
+
+* Scorers
+  - For non-probabilistic languages, we had generators and recognizers
+  - For probabalistic languages, samplers are like generators, scorers are like
+    generators
+** Example scorer
+   #+BEGIN_SRC clojure
+     (defn score-ab* [str]
+       (if (empty? str)
+         0.5
+         (if (prefix? '(a b) str)
+           (* 0.5 (score-ab* (rest (rest str))))
+           0)))
+   #+END_SRC
+
+   - Notice these match the probabilities from the corresponding generator. For
+     example, (score-ab* '(a b)) equals 0.25.
+   - (From student question) Keep in mind that while this is an exponential
+     probability distribution, others are possible
+     
+* Modeling Corpora
+  - Imagine we're given a dataset (e.g. Reddit comments) and and a model and we
+    want to know how well does the model predict the dataset
+** Corpora (plural of corpus)
+   - A corpus is a finite multiset of strings (for example, all the sentences in
+     Moby Dick). Since it's a multiset, the same sentence can appear twice.
+** Corpus Samplers
+   #+begin_src clojure
+     (defn sample-corpus [generator size]
+       (if (= size 0)
+        '()
+        (cons (generator)
+              (sample-corpus generator (- size 1)))))
+   #+end_src
+   - Takes a sampler/generator and a size, and uses the sampler/generator to make a corpus of the given size.
+   - The problem is that in most corpora, each sentence depends on the last. For example, a corpus about baseball would have multiple sentence about baseball. We are eliminating this for now for simplicity.
+** Corpus Scorer
+   - We can also have a corpus scorer, which takes a corpus and returns its probability.
+   #+begin_src clojure
+     (defn score-corpus [scorer corpus]
+         (if (empty? corpus)
+           1.0
+           (* (scorer (first corpus))
+              (score-corpus scorer (rest corpus)))))
+   #+end_src
+   - Scores first sentence, and multiplies it by the probability of rest of sentences.
+   - This also ignores that in real corpora, the probability of one sentence depends on the previous sentence.
+   - Note that the score for a particular corpus depends on the scorer which you use.
+   
+* Comparing two scorers
+  - We can compare two scorers, our previous scorer, and a scorer over {a, b}* (all strings made of a's and b's).
+  - Since {a, b}* is a superset of (ab)*, which means it has every string in (ab)* plus some extras,
+    it will tend to assign 
+  - A specific, restritive theory (like (ab)*) tends to assign higher probabilities to fewer strings.
+    A general, less-restrictive theory (like {a, b}*) can assign more strings non-zero probabilities, but each particular string will tend to have lower probability.
+  - This tradeoff is a fundamental tradeoff 
+  
+
